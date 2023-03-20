@@ -7322,8 +7322,8 @@
                                 )
                             );
                             /////////////////////////////////////////////////_________ORDER HEADER TBS
-                        If(
-                                IsBlank(
+                        If( 
+                             CountRows(colOffliceOrderHeaderTBS) && IsBlank(
                                     LookUp(
                                         colOffliceOrderHeaderTBS,
                                         Vists.'Visit ID' = First(VisitData).'Visit ID'
@@ -7689,7 +7689,7 @@
                                                     'Total Quantity': ThissItem.qtyCases + ThissItem.qtyPcs,
                                                     Cases: ThissItem.qtyCases,
                                                     PCs: ThissItem.qtyPcs,
-                                                    'Empty Jars': ThissItem.emptyJar,
+                                                   // empty jar: ThissItem.emptyJar,
                                                     'Order Number': LookUp(
                                                         colOfflineOrderHeader,
                                                         'Offline Order Number' = First(CreateOrderRecord).'Offline Order Number'
@@ -7882,7 +7882,7 @@
                                 
                         /////////// Patch Invoice Header////////////////////
                         
-                        
+                        /*
                         ClearCollect(
                                     CreateInvHeader,
                                     If(
