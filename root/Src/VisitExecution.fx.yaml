@@ -7323,15 +7323,19 @@
                             );
                             /////////////////////////////////////////////////_________ORDER HEADER TBS
                         If( 
-                             CountRows(colOffliceOrderHeaderTBS) && IsBlank(
+                             CountRows(colOffliceOrderHeaderTBSNew) && IsBlank(
+                        
+                              
+                              
+                              
                                     LookUp(
-                                        colOffliceOrderHeaderTBS,
+                                        colOffliceOrderHeaderTBSNew,
                                         Vists.'Visit ID' = First(VisitData).'Visit ID'
                                     )
                                 ),
                                 Collect(
-                                    colOffliceOrderHeaderTBS,
-                                      //  Defaults(colOffliceOrderHeaderTBS),
+                                    colOffliceOrderHeaderTBSNew,
+                                      //  Defaults(colOffliceOrderHeaderTBSNew),
                                     {
                                         'Order Date': Now(),
                                         'Order Type': 'Order Type (Choice)'.'Sales Order',
@@ -7441,9 +7445,9 @@
                                     }
                                 ),
                                 Patch(
-                                    colOffliceOrderHeaderTBS,
+                                    colOffliceOrderHeaderTBSNew,
                                     LookUp(
-                                        colOffliceOrderHeaderTBS,
+                                        colOffliceOrderHeaderTBSNew,
                                         Vists.'Visit ID' = First(VisitData).'Visit ID'
                                     ),
                                     {
